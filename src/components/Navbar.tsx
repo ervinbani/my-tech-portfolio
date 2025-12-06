@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -15,9 +21,10 @@ const Navbar = () => {
     { key: 'nav.contact', href: '#contact' },
   ];
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'it' : 'en');
-  };
+  const languages = [
+    { code: 'en', label: 'English', flag: '🇬🇧' },
+    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
@@ -38,15 +45,36 @@ const Navbar = () => {
                 {t(item.key)}
               </a>
             ))}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 text-muted-foreground hover:text-primary"
-            >
-              <Globe className="w-4 h-4" />
-              {language.toUpperCase()}
-            </Button>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary"
+                >
+                  <Globe className="w-4 h-4" />
+                  {language.toUpperCase()}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="min-w-[140px]">
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => setLanguage(lang.code as 'en' | 'it')}
+                    className="flex items-center justify-between cursor-pointer"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span>{lang.flag}</span>
+                      <span>{lang.label}</span>
+                    </span>
+                    {language === lang.code && (
+                      <Check className="w-4 h-4 text-primary" />
+                    )}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Mobile Menu Button */}
@@ -71,15 +99,26 @@ const Navbar = () => {
                 {t(item.key)}
               </a>
             ))}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              className="mt-2 flex items-center gap-2 text-muted-foreground hover:text-primary"
-            >
-              <Globe className="w-4 h-4" />
-              {language.toUpperCase()}
-            </Button>
+            <div className="mt-4 pt-4 border-t border-border">
+              <p className="text-xs text-muted-foreground mb-2">{t('nav.language') || 'Language'}</p>
+              <div className="flex gap-2">
+                {languages.map((lang) => (
+                  <Button
+                    key={lang.code}
+                    variant={language === lang.code ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => {
+                      setLanguage(lang.code as 'en' | 'it');
+                      setIsOpen(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.label}</span>
+                  </Button>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>
