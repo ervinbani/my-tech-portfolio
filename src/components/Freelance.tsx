@@ -40,6 +40,23 @@ const Freelance = () => {
         ? ['Voice Booking', 'Real-time Availability', 'Custom Website', 'Guest Management', 'Auto Confirmations', 'Payment Integration']
         : ['Prenotazione Vocale', 'Disponibilità Real-time', 'Sito Personalizzato', 'Gestione Ospiti', 'Conferme Automatiche', 'Integrazione Pagamenti'],
     },
+    {
+      title: language === 'en' ? 'Smart CMS Plugin' : 'Plugin CMS Smart',
+      client: language === 'en' ? 'Multi-Industry Solution' : 'Soluzione Multi-Settore',
+      description: language === 'en' 
+        ? 'Versatile content management system that integrates seamlessly with both the Product Manager and Hotel Booking System. Allows clients to easily publish products, rooms, text content, and images to their website. Designed for non-technical staff, making professional website management accessible to everyone.'
+        : 'Sistema di gestione contenuti versatile che si integra perfettamente sia con il Gestionale Prodotti che con il Sistema Prenotazioni Hotel. Permette ai clienti di pubblicare facilmente prodotti, stanze, contenuti testuali e immagini sul proprio sito. Progettato per personale non tecnico, rende la gestione professionale del sito accessibile a tutti.',
+      tech: ['React', 'Node.js', 'REST API', 'PostgreSQL', 'AWS S3', 'Tailwind'],
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
+      link: 'https://example.com',
+      testimonial: language === 'en' 
+        ? 'Finally our team can update the website independently. No more waiting for developers for every small change!'
+        : 'Finalmente il nostro team può aggiornare il sito in autonomia. Basta aspettare gli sviluppatori per ogni piccola modifica!',
+      featured: false,
+      features: language === 'en' 
+        ? ['Product Publishing', 'Image Gallery', 'Text Editor', 'Room Management', 'SEO Tools', 'Multi-Platform Integration']
+        : ['Pubblicazione Prodotti', 'Galleria Immagini', 'Editor Testi', 'Gestione Stanze', 'Strumenti SEO', 'Integrazione Multi-Piattaforma'],
+    },
   ];
 
   return (
