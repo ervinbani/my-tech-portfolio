@@ -23,6 +23,23 @@ const Freelance = () => {
         ? ['Products & Variants', 'Stock Management', 'Custom Quotes', 'Invoicing', 'Customer CRM', 'Calendar', 'Role-based Access', 'Analytics Dashboard', 'Voice Commands']
         : ['Prodotti & Varianti', 'Gestione Stock', 'Preventivi Custom', 'Fatturazione', 'CRM Clienti', 'Calendario', 'Accesso per Ruoli', 'Dashboard Analytics', 'Comandi Vocali'],
     },
+    {
+      title: language === 'en' ? 'Smart Hotel Booking System' : 'Sistema Prenotazioni Hotel Smart',
+      client: language === 'en' ? 'Hospitality Industry' : 'Settore Hospitality',
+      description: language === 'en' 
+        ? 'Intelligent booking system with voice-enabled reservation creation, seamlessly integrated with customized hotel websites. Each implementation is tailored to the specific needs of the hotel, featuring real-time availability, automated confirmations, and guest management.'
+        : 'Sistema di prenotazione intelligente con creazione prenotazioni vocale, integrato direttamente con siti web hotel personalizzati. Ogni implementazione è su misura per le esigenze specifiche dell\'hotel, con disponibilità in tempo reale, conferme automatiche e gestione ospiti.',
+      tech: ['React', 'Next.js', 'Voice API', 'Supabase', 'Stripe', 'Tailwind'],
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
+      link: 'https://example.com',
+      testimonial: language === 'en' 
+        ? 'The voice booking feature has impressed our guests. Our reservation process is now faster and more intuitive than ever.'
+        : 'La funzione di prenotazione vocale ha impressionato i nostri ospiti. Il processo di prenotazione è ora più veloce e intuitivo che mai.',
+      featured: false,
+      features: language === 'en' 
+        ? ['Voice Booking', 'Real-time Availability', 'Custom Website', 'Guest Management', 'Auto Confirmations', 'Payment Integration']
+        : ['Prenotazione Vocale', 'Disponibilità Real-time', 'Sito Personalizzato', 'Gestione Ospiti', 'Conferme Automatiche', 'Integrazione Pagamenti'],
+    },
   ];
 
   return (
